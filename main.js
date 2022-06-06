@@ -74,7 +74,7 @@ L.control.fullscreen().addTo(map);
 overlays.gpx.addTo(map);
 
 // GPX Track Layer implementieren
-var track = 'data/btt-etappe-08-achensee-kaiserstuhl.gpx'; // URL to your GPX file or the GPX itself
+var track = 'data/etappe-08-achensee-kaiserhaus.gpx'; // URL to your GPX file or the GPX itself
 new L.GPX(track, {
     async: true,
     marker_options: {
