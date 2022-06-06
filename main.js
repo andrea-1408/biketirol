@@ -74,15 +74,3 @@ L.control.fullscreen().addTo(map);
 overlays.gpx.addTo(map);
 
 // GPX Track Layer implementieren
-var track = 'data/etappe-08-achensee-kaiserhaus.gpx'; // URL to your GPX file or the GPX itself
-new L.GPX(track, {
-    async: true,
-    marker_options: {
-        startIconUrl: 'icons/start.png',
-        endIconUrl: 'icons/finish.png',
-        iconSize: [,],
-        shadowSize: [,]
-    }
-}).on('loaded', function(e) {
-  map.fitBounds(e.target.getBounds());
-}).addTo(overlays.gpx);
