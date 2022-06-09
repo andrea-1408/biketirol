@@ -90,7 +90,19 @@ let gpxTrack = new L.GPX("../data/08.gpx", {
     }
 }).addTo(overlays.gpx);
 
+// Zoom auf GPX Track in der Kartendarstellung
 gpxTrack.on("loaded", function(evt) {
     // console.log("loaded gpx event: ", evt);
-    map.fitBounds(evt.target.getBounds())
+    let gpxLayer = evt.target;
+    map.fitBounds(gpxLayer.getBounds());
+    let popup = `<h3>${gpxLayer.get_name()}</h3>
+    <ul>
+        <li>Streckenlänge: ${(gpxLayer.get_distance()/1000).toFixed()} km</li>
+        <li>tiefster Punkt: ${gpxLayer.get_elevation_min()} m</li>
+        <li>höchster Punkt: ${gpxLayer.get_elevation_max()} m</li>
+        <li>Hoehenmeter bergauf: ${gpxLayer.get_elevation_gain().toFixed()} m</li>
+        <li>Hoehenmeter bergab: ${gpxLayer.get_elevation_loss().toFixed()} m</li>
+    `;
+    gpxLayer.bindPopup(popup);
 });
+
