@@ -106,3 +106,9 @@ gpxTrack.on("loaded", function(evt) {
     gpxLayer.bindPopup(popup);
 });
 
+// Höhenprofil hinzufügen
+let elevationControl = L.control.elevation({}).addTo(map);
+gpxTrack.on("addline", function(evt) {
+    elevationControl.addData(evt.line);
+})
+
