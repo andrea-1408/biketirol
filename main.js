@@ -86,6 +86,11 @@ let gpxTrack = new L.GPX("../data/08.gpx", {
     polyline_options: {
         color: "black",
         dashArray: [2, 5],
-        
+
     }
 }).addTo(overlays.gpx);
+
+gpxTrack.on("loaded", function(evt) {
+    // console.log("loaded gpx event: ", evt);
+    map.fitBounds(evt.target.getBounds())
+});
